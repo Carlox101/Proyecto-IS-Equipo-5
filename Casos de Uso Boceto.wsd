@@ -1,0 +1,31 @@
+@startuml
+
+
+rectangle Sistema{
+usecase "Registro" as UC1
+usecase "Formulacion del curso" as UC2
+usecase "Evaluación de la formulación del curso" as UC3
+usecase "Firma de la Carta de Intension" as UC4
+usecase "Presentacion del Cronograma" as UC5
+usecase "Firma de la Carta de Compromiso" as UC6
+
+
+}
+
+:Proponente: --> UC1
+:Proponente: --> UC2
+:Direccion DEU: --> UC3
+:Coordinacion Extension: --> UC3
+:Proponente: --> UC4
+:Direccion DEU: --> UC4
+:Proponente: --> UC5
+:Direccion DEU: --> UC5
+:Proponente: --> UC6
+:Direccion DEU: --> UC6
+
+UC1 <.. UC2 : <include>
+UC2 <.. UC3 : <include>
+UC4 ..> UC3 : <extend>
+UC5 <.. UC4 : <include>
+UC6 <.. UC5 : <include>
+@enduml

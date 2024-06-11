@@ -1,0 +1,31 @@
+@startuml
+
+Proponente : + tipo 
+Proponente : + nacionalidad
+Proponente : # docIdentidad
+'tipo = Pers.Nat o J        
+
+Profesor : + area
+Profesor : - CredencialAcademica
+Profesor : + Experiencia
+
+CursoExtension : - PerfilDelDocente
+CursoExtension : - perfilEgresoDocente
+CursoExtension : + perfilIngresoDocente
+CursoExtension : + estructuraCurricular
+CursoExtension : + duracion
+CursoExtension : + cronograma
+CursoExtension : + objetivos
+
+CursoExtension <-- Proponente :  propone 1..*
+CursoExtension <-- Profesor
+
+DireccionDEU : + listaCursosExtension
+
+CoordinacionExtension : + listaAvalesTecnicosEmitidos
+
+Proponente --o Profesor
+CursoExtension <-- CoordinacionExtension : 1..* gestiona
+DireccionDEU --> CursoExtension : 1..* coordina/gestiona
+
+@enduml
