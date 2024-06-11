@@ -1,9 +1,11 @@
 @startuml
 [*] --> Propuesto
 Propuesto --> EnRevisión : Proponer curso
-EnRevisión --> Aprobado : Revisar curso
-EnRevisión --> Cancelado : Cancelar curso
-Aprobado --> EnEjecución : Aprobar curso
+state c <<choice>>
+EnRevisión --> c : ¿Aprobado? 
+c --> Cancelado : [No] 
+c --> Aprobado : [Si]
+Aprobado --> EnEjecución: Ejecutar curso
 EnEjecución --> Finalizado : Finalizar curso
 EnEjecución --> Cancelado : Cancelar curso
 Finalizado --> [*]
