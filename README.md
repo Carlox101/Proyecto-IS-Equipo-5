@@ -4,7 +4,7 @@ Integrantes:
 - Maria Laura Delgado C.I: 29.662.488
 - Andreina Velasquez C.I: 28.309.031
 - Josias Gonzales C.I: 28.058.363
-- Alejandro Gonzales C.I: 
+- Alejandro Gonzales C.I: 28.313.390
 
 Archivos PNG de los Diagramas de Estado,Clases y Uso:
 ![Diagrama de Estados Boceto](https://github.com/Carlox101/Reto-07-08-09-Grupo5/assets/171298765/7af06cb4-7902-489b-83b7-0d420162d809)
