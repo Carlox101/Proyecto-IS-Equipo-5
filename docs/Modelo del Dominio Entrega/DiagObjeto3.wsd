@@ -1,0 +1,34 @@
+@startuml
+'Asignacion de profesor para el curso
+
+[*] --> CursoPropuesto
+CursoPropuesto --> EnRevisión
+state c <<choice>>
+state c2 <<choice>>
+state c3 <<choice>>
+state c4 <<choice>>
+state c5 <<choice>>
+
+EnRevisión --> c : ¿Aprobado? 
+c --> Cancelado : [No] 
+c --> Aprobado : [Si]
+Aprobado --> ProfesoresAptos : Buscar
+ProfesoresAptos --> c2 : ¿Disponible? 
+c2 --> NotificarProfesor : [Si]
+NotificarProfesor --> c3 : ¿Acepta?
+c3 --> EnEjecución : [Si]
+c3 --> ProfesoresAptos : [No] 
+
+c2 --> SeBuscaProfesorExterno_ : [No]
+SeBuscaProfesorExterno_ --> c4 : ¿Disponible? 
+c4 --> NotificarProfesor_ : [Si]
+NotificarProfesor_ --> c5 : ¿Acepta?
+c5 --> EnEjecución : [Si]
+c5 --> SeBuscaProfesorExterno_ : [No]
+c4 --> Cancelado : [No]
+
+EnEjecución --> Finalizado : Finalizar curso
+EnEjecución --> Cancelado : Cancelar curso
+Finalizado --> [*]
+Cancelado --> [*]
+@enduml

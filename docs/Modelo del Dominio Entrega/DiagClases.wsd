@@ -1,0 +1,78 @@
+@startuml
+UCV <-- CoordinacionExtension
+UCV <-- DireccionDEU
+UCV o-- Proponente
+UCV o-- Profesor
+'Agregacion
+
+Usuario : # ID
+Usuario : + nombre
+Usuario : + apellido
+Usuario : - email
+Usuario : - contraseña 
+Usuario : + user
+
+Administrador --|> Usuario
+Administrador : - LlavedeAcceso
+
+Proponente --|> Usuario
+Proponente : + tipo 
+Proponente : + nacionalidad
+Proponente : # docIdentidad
+'tipo = Pers.Nat o J        *
+
+Profesor --|> Usuario
+Profesor : + area
+Profesor : - CredencialAcademica
+Profesor : + Experiencia
+
+CoordinacionExtension -- "1..*" Administrador 
+DireccionDEU --> "1..*" Administrador
+'Serian ente o administrador
+
+CursoExtension : - PerfilDelDocente
+CursoExtension : - perfilEgresoDocente
+CursoExtension : + perfilIngresoDocente
+CursoExtension : + estructuraCurricular
+CursoExtension : + duracion
+CursoExtension : + cronograma
+CursoExtension : + objetivos
+
+CursoExtension <-- Proponente :  propone 1..*
+CoordinacionExtension <-- Proponente :  EnviaPropuesta
+CursoExtension <-- Profesor
+
+DireccionDEU : + listaCursosExtension
+
+CoordinacionExtension : + listaAvalesTecnicosEmitidos
+
+Proponente --o Profesor
+CursoExtension <-- CoordinacionExtension : 1..* gestiona
+CoordinacionExtension -- DireccionDEU : DebatenPropuesta
+DireccionDEU --> CursoExtension : 1..* coordina/gestiona
+
+Aval : + ID
+Aval : + estatus
+Aval : + fechaEmision
+Aval : # observaciones
+
+'Aval --> CursoExtension : asociado
+Aval <-- CoordinacionExtension : emite
+Aval <-- DireccionDEU : aprueba
+
+'Carta de intencion: Puente entre aval, y cartaCompromiso, que es la carta de intencion?
+
+CartaCompromiso <-- DireccionDEU : emite
+CartaCompromiso : + fechaEmision
+CartaCompromiso : - detallesDeAcuerdoFinanc
+CartaCompromiso : + compromisos
+CartaCompromiso <-- Proponente : Acepta/Rechaza
+
+CartaIntension --o CartaCompromiso 
+CartaIntension --o Aval
+CartaIntension o-- Proponente : Acepta/Rechaza
+
+CartaIntension : + FinesLucrativos
+CartaIntension : + Firma
+
+@enduml

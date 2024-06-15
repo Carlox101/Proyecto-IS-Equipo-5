@@ -1,0 +1,21 @@
+'Diagrama previo antes de aprobar el curso
+'Aprobacion x DEU
+
+@startuml DiagEstado4
+
+state c <<choice>>
+state c2 <<choice>>
+
+[*] --> Propuesta
+DEU <-- Propuesta : envia
+DEU --> VerificaProponente
+VerificaProponente --> c : ¿Confiable?
+c --> ValidezInformacion : [Si] 
+ValidezInformacion --> c2 : ¿Valida? 
+c2 --> seApruebaCurso : [Si]
+c --> PropuestaNegada : [No]
+c2 --> PropuestaNegada : [No]
+seApruebaCurso --> [*]
+PropuestaNegada --> [*]
+
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+'Si se aprueba el curso
+
+[*] --> CursoPropuesto
+CursoPropuesto --> EnRevisión
+state c <<choice>>
+EnRevisión --> c : ¿Aprobado? 
+c --> Cancelado : [No] 
+c --> Aprobado : [Si]
+Aprobado --> EnEjecución: Ejecutar curso
+EnEjecución --> Finalizado : Finalizar curso
+EnEjecución --> Cancelado : Cancelar curso
+Finalizado --> [*]
+Cancelado --> [*]
+@enduml
