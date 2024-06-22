@@ -1,0 +1,29 @@
+'Diagrama previo antes de aprobar el curso
+'Aprobacion x DEU
+
+@startuml
+
+left to right direction
+actor Proponente as Proponente
+actor DEU as DEU
+
+rectangle AprobacionCurso{ 
+
+(propuesta) as UC1
+(verificacionProponente) as UC2
+
+(confiable) .> UC2 : <<extend>>
+
+(confiable) <-left. (validezDeInformacion) : <<extend>>
+(validezDeInformacion) .left-> (valida) : <<include>>
+(valida) .-> (seApruebaCurso) : <<include>>
+}
+
+Proponente --> UC1 : envia
+DEU --> UC1 : recibe
+DEU --> UC2 : verifica
+DEU -left-> (validezDeInformacion) : valida
+DEU --> (seApruebaCurso)
+Proponente --> (seApruebaCurso) : seInformaDeLaAprobacion
+
+@endluml

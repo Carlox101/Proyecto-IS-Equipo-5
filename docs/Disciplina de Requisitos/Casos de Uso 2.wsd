@@ -1,0 +1,30 @@
+'Si se aprueba el curso
+@startuml
+
+left to right direction
+actor Proponente as Proponente
+actor DEU as DEU
+actor CoordinacionExtension as CoordinacionExtension
+
+rectangle AprobacionCursoDeExtension{
+
+(cursoPropuesto) as UC1
+(revisionCurso) as UC2
+(aprobacion) as UC3
+(UC1) -up- (UC2)
+UC3 .> UC2 : <<extend>>
+UC3 .left-> (aceptacion) : <<include>>
+
+(ejecucion) .> (aceptacion) : <<extend>>
+
+}
+
+Proponente --> UC1 : proponeCurso
+DEU -right-> UC2
+CoordinacionExtension -right-> UC2
+
+DEU -down-> UC3 : validaInformacion
+CoordinacionExtension -down-> UC3 : verificaFormulacionDePropuesta
+CoordinacionExtension --> (aceptacion)
+Proponente --> (aceptacion) : seInformaDeLaAceptacion
+@endluml
