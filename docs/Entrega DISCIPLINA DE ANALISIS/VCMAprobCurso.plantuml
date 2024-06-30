@@ -1,0 +1,35 @@
+'Aprobacion de curso VCM
+
+@startuml
+skinparam linetype ortho
+top to bottom direction
+actor     Proponente
+actor     DEU
+actor     CoordinacionDeExtension
+entity    Aceptacion
+entity    Ejecucion
+entity    CursoPropuesto
+entity    RevisionCurso
+entity    Aprobacion
+boundary  PaginaDeAprobacion
+
+Proponente -- Aceptacion
+Proponente -- CursoPropuesto
+
+CursoPropuesto -- RevisionCurso
+CursoPropuesto -- Aceptacion
+Ejecucion --* Aceptacion
+
+Aprobacion --o RevisionCurso
+Aprobacion -- PaginaDeAprobacion
+Aprobacion --* Aceptacion
+PaginaDeAprobacion -- RevisionCurso
+
+DEU -- RevisionCurso
+DEU -- Aprobacion
+
+CoordinacionDeExtension -- RevisionCurso
+CoordinacionDeExtension -- Aprobacion
+CoordinacionDeExtension -- Aceptacion
+
+@endluml

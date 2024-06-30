@@ -1,0 +1,35 @@
+'Aprobacion de curso por Coordinacion de extension VCM
+
+@startuml
+skinparam linetype ortho
+left to right direction
+
+actor Proponente
+actor CoordExtension
+
+entity Propuesta
+entity FormulacionValida
+entity InformacionValida
+entity AprobarCurso
+control VerificaFormulacion
+control VerificaCredenciales
+control ProcesamientoDeAprobacion
+boundary SeNiegaPropuesta
+boundary PaginaVerificadoraDeInfo
+
+Proponente - Propuesta
+Propuesta - CoordExtension
+CoordExtension - VerificaFormulacion
+VerificaFormulacion - FormulacionValida
+FormulacionValida - VerificaCredenciales
+VerificaFormulacion - PaginaVerificadoraDeInfo
+VerificaCredenciales - PaginaVerificadoraDeInfo
+VerificaCredenciales - ProcesamientoDeAprobacion
+InformacionValida -* PaginaVerificadoraDeInfo
+InformacionValida -* ProcesamientoDeAprobacion
+VerificaFormulacion - SeNiegaPropuesta
+VerificaCredenciales - SeNiegaPropuesta
+ProcesamientoDeAprobacion - AprobarCurso
+CoordExtension -AprobarCurso
+
+@enduml

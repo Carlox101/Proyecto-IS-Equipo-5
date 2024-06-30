@@ -1,0 +1,36 @@
+'Diagrama de colaboración aprob curso
+
+
+@startuml
+skinparam linetype ortho
+top to bottom direction
+actor     Proponente
+actor     DEU
+actor     CoordinacionDeExtension
+entity    Aceptacion
+entity    Ejecucion
+entity    CursoPropuesto
+entity    RevisionCurso
+entity    Aprobacion
+boundary  PaginaDeAprobacion
+
+Proponente --> Aceptacion : 7: SeInformaDeLaAprobacion
+Proponente --> CursoPropuesto : 1: ProponeCurso
+
+CursoPropuesto --> RevisionCurso
+CursoPropuesto --> Aceptacion
+Ejecucion --* Aceptacion
+
+Aprobacion --o RevisionCurso
+Aprobacion -- PaginaDeAprobacion
+Aprobacion --* Aceptacion
+PaginaDeAprobacion -- RevisionCurso
+
+DEU --> RevisionCurso : 3: AnalizaCurso
+DEU --> Aprobacion : 4: ValidaLaInformacion
+
+CoordinacionDeExtension --> RevisionCurso : 2: RevisaCurso
+CoordinacionDeExtension -->Aprobacion : 5: VerificaInfoDePropuesta
+CoordinacionDeExtension --> Aceptacion : 6: DaAceptacion
+
+@endluml

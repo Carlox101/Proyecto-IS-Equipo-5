@@ -1,0 +1,33 @@
+'Diagrama de colaboración asignacion de proponente
+
+@startuml
+
+actor proponente
+actor DEU
+entity Propuesta 
+control VerificarProponente
+control VerificarInformación
+boundary PantallaDeSeguimiento
+entity CartaDeIntension
+entity SeguimientoValido
+entity CartaDeCompromiso
+boundary PantallaParaImprimirCarta
+control Validar
+
+proponente --> Propuesta :1: envia
+DEU <-- Propuesta :2: recibe
+proponente --> CartaDeIntension : 3: Envia
+DEU <-- CartaDeIntension :4: Obtiene
+
+Propuesta-- VerificarProponente : 5: ComprobacionDeDatos
+Propuesta--  VerificarInformación : 6: ChequeoDeRequisitos
+VerificarProponente --* PantallaDeSeguimiento  : 7: ComprobarProponenteLegitimo
+VerificarInformación --* PantallaDeSeguimiento :8: ChequeoDeRequisitos
+:DEU: --> PantallaDeSeguimiento :9: ValidarSeguimiento
+PantallaDeSeguimiento --> Validar :10: ConfirmarValidacion
+Validar *-- SeguimientoValido
+SeguimientoValido -- CartaDeCompromiso : 11: SeEmite
+CartaDeCompromiso --> PantallaParaImprimirCarta :12: Mostrar
+DEU--> PantallaParaImprimirCarta :13: ObtieneCartaDeCompromiso
+
+@enduml

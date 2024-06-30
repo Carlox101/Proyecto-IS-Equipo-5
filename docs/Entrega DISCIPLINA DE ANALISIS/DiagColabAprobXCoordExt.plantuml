@@ -1,0 +1,35 @@
+'Diag colaboracion Aprobacion de curso por Coordinacion de extension
+
+@startuml
+skinparam linetype ortho
+left to right direction
+
+actor Proponente
+actor CoordExtension
+entity Propuesta
+entity FormulacionValida
+entity InformacionValida
+control VerificaFormulacion
+control VerificaCredenciales
+control ProcesamientoDeAprobacion
+entity AprobarCurso
+boundary PaginaVerificadoraDeInfo
+
+boundary SeNiegaPropuesta
+
+Proponente -> Propuesta: 1:Envia<&arrow-bottom>
+Propuesta <- CoordExtension: 2:Recibe<&arrow-top>
+CoordExtension -> VerificaFormulacion : 3: RealizaVerificacion
+VerificaFormulacion -> FormulacionValida
+FormulacionValida - VerificaCredenciales : 4: RevisionCredenciales<&arrow-bottom>
+VerificaFormulacion -> PaginaVerificadoraDeInfo
+VerificaCredenciales -> PaginaVerificadoraDeInfo
+InformacionValida -* ProcesamientoDeAprobacion
+InformacionValida -* PaginaVerificadoraDeInfo
+ProcesamientoDeAprobacion -> AprobarCurso : 7: AprobacionCorrecta
+AprobarCurso -> PaginaVerificadoraDeInfo: <&arrow-bottom>4:CredencialesCorrectas
+VerificaFormulacion -> SeNiegaPropuesta: 5:FormulacionIncorrecta <&arrow-bottom>
+VerificaCredenciales -> SeNiegaPropuesta: 6:CredencialesIncorrectas<&arrow-bottom>
+CoordExtension -> AprobarCurso : 8: DEUAprobóElCurso
+
+@enduml

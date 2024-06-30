@@ -1,0 +1,32 @@
+'Aprobacion de curso por DEU VCM
+
+@startuml
+
+actor     Proponente
+actor     DEU
+entity    Propuesta
+entity    AprobacionCurso
+entity    DatosConfiables
+entity    InfoValida
+control    ValidacionDeInfo
+control    VerificacionDeProponente
+boundary  PaginaDeAprobacion
+
+Proponente -- Propuesta
+Proponente -- AprobacionCurso
+
+DEU -- Propuesta
+DEU -- ValidacionDeInfo
+DEU -- VerificacionDeProponente
+DEU -- AprobacionCurso
+
+Propuesta -- PaginaDeAprobacion
+PaginaDeAprobacion -- ValidacionDeInfo
+
+ValidacionDeInfo --o InfoValida
+InfoValida *-- AprobacionCurso
+
+ValidacionDeInfo --o DatosConfiables
+DatosConfiables --o VerificacionDeProponente 
+
+@endluml

@@ -1,0 +1,26 @@
+'Diagrama de colaboración aprobacion por DEU
+
+@startuml AprobXDEU
+skinparam linetype ortho
+top to bottom direction
+actor DEU
+actor Proponente
+entity Propuesta
+control VerificacionDeProponente
+control ValidezDeInformacion
+control ProcesamientoDeAprobacion
+boundary SeApruebaElCurso
+boundary SeNiegaPropuesta
+
+Proponente --> Propuesta: 1:Envia<&arrow-top>
+Propuesta <-- DEU: 2:Recibe<&arrow-top>
+DEU --> VerificacionDeProponente: 3:Verifica<&arrow-bottom>
+VerificacionDeProponente --> ValidezDeInformacion: 4:Confiable<&arrow-bottom>
+ValidezDeInformacion --> ProcesamientoDeAprobacion : 5:valida<&arrow-bottom>
+ValidezDeInformacion --> SeNiegaPropuesta : 6:invalida<&arrow-bottom>
+ProcesamientoDeAprobacion --> SeApruebaElCurso: 7:CursoAprobado<&arrow-bottom>
+VerificacionDeProponente --> SeNiegaPropuesta: <&arrow-bottom>8:NoConfiable 
+DEU --> SeApruebaElCurso
+DEU --> Proponente : 9:InformaLaAprobacionDeCurso<&arrow-bottom>
+
+@enduml

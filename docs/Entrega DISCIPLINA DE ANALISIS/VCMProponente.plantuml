@@ -1,0 +1,32 @@
+'Asignacion de proponente VCM
+
+@startuml
+skinparam linetype ortho
+top to bottom direction
+actor proponente
+actor DEU
+entity Propuesta
+control VerificarProponente
+control VerificarInformación
+boundary PantallaDeSeguimiento
+entity CartaDeCompromiso
+entity cartaDeIntension
+entity SeguimientoValido
+boundary PantallaParaImprimirCarta
+control Validar
+
+DEU -- Propuesta 
+proponente -- Propuesta 
+DEU -- cartaDeIntension
+proponente -- cartaDeIntension
+Propuesta-- VerificarProponente
+Propuesta--  VerificarInformación
+VerificarProponente --* PantallaDeSeguimiento
+VerificarInformación --* PantallaDeSeguimiento
+PantallaDeSeguimiento -- Validar
+Validar --> SeguimientoValido
+SeguimientoValido -- CartaDeCompromiso
+CartaDeCompromiso -- PantallaParaImprimirCarta
+:DEU:-- PantallaParaImprimirCarta
+:DEU: -- PantallaDeSeguimiento
+@enduml
