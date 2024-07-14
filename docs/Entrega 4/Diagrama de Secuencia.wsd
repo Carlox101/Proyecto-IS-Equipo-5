@@ -1,0 +1,37 @@
+@startuml
+
+actor Proponente
+entity Propuesta
+actor DEU
+control VerificarProponente
+control VerificarInformación
+control ProcesamientoDeAprobacion
+boundary SeApruebaElCurso
+
+
+
+activate Propuesta 
+activate Proponente
+Proponente --> Propuesta : envia
+deactivate Proponente
+activate DEU
+Propuesta <-- DEU : recibe
+
+deactivate Propuesta
+DEU -> VerificarProponente
+activate VerificarProponente
+VerificarProponente <- DEU : compruebaDatos
+activate VerificarInformación
+DEU -> VerificarInformación : chequeoDeRequisitos
+deactivate VerificarProponente
+deactivate VerificarInformación
+activate ProcesamientoDeAprobacion
+ProcesamientoDeAprobacion <- DEU
+ProcesamientoDeAprobacion -> SeApruebaElCurso
+deactivate ProcesamientoDeAprobacion
+activate SeApruebaElCurso
+
+DEU -> SeApruebaElCurso
+
+
+@enduml

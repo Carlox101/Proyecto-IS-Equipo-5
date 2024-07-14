@@ -1,0 +1,27 @@
+@startuml Despliegue
+
+package "Computadora"{
+
+package "Aplicación"{
+
+node "Programa" {
+    [Interfaz]
+    [Código Java]
+}
+
+node "Servidor"{
+    [Servicios]
+}
+
+Programa -- Servidor
+
+}
+database "Archivos" {
+    [Datos Usuario]
+    [Datos Propuesta]
+    [Datos Resultado]
+}
+
+Servidor --- Archivos
+
+}

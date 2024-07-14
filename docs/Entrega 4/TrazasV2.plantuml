@@ -1,0 +1,73 @@
+@startuml DiagramaTrazas
+
+
+package "Frontend" {
+Boundary Jpanel
+Boundary Javafx
+Boundary Layout
+Boundary Jbutton
+Control Servicio
+Entity Componente
+
+  Javafx -> Jpanel
+  Jpanel --> Layout
+  Jpanel --> Jbutton
+  Jbutton --> Componente
+  Layout --> Componente
+  Componente --> Servicio
+}
+
+
+
+package "Backend" {
+Entity DatosUsuario 
+Control ValidarUsuario
+Entity DatosPropuesta
+Control ValidarPropuesta
+Control ValidarCredenciales
+Control ValidarFormulacion
+Entity ResultadoVal
+Control EnviarPropuesta
+
+
+
+DatosUsuario --> ValidarUsuario
+DatosUsuario --> ValidarPropuesta
+DatosPropuesta --> ValidarPropuesta
+ValidarPropuesta --> ValidarCredenciales
+ValidarPropuesta --> ValidarFormulacion
+DatosPropuesta -> EnviarPropuesta
+ValidarCredenciales --> ResultadoVal
+ValidarFormulacion -> ResultadoVal
+}
+
+Package "Analysis"{
+Boundary JPanelX
+Control ValidarUsuarioX
+Entity UsuarioX
+Control ValidarPropuestaX
+Entity ResultadoX
+Entity PropuestasX
+Control EnviarPropuestaX
+
+
+JPanelX ----> UsuarioX
+JPanelX ----> PropuestasX
+ValidarUsuarioX --> UsuarioX
+ValidarPropuestaX --> ResultadoX
+ValidarPropuestaX --> PropuestasX
+EnviarPropuestaX --> PropuestasX
+JPanelX ---> ResultadoX
+}
+
+Servicio ..> DatosUsuario : "<<Envía>>"
+Servicio ..> DatosPropuesta : "<<Envía>>"
+
+ValidarUsuario ...> ValidarUsuarioX : "<<Envía>>"
+ValidarPropuesta ...> ValidarPropuestaX : "<<Envía>>"
+EnviarPropuesta ...> EnviarPropuestaX : "<<Envía>>"
+
+Jpanel ..> JPanelX : "<<Solicita>>"
+
+
+@enduml

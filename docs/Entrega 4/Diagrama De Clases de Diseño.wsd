@@ -1,0 +1,71 @@
+@startuml
+
+Proponente --> Propuesta : realiza()
+DEU --> Proponente : Notificar()
+DEU --> CartaDeCompromiso : emitir()
+SistemaVerificacion --* DEU
+Propuesta --> SistemaVerificacion
+
+class Proponente{
+    String +tipo 
+    String -nacionalidad
+    int #ID
+    int RIF
+    string Resumencurricular
+    string Copiadetítulouniversitario
+    string Estatus
+
+    void formularPropuesta()
+    void enviarPropuesta()
+    void FirmarCartaIntension()
+}
+
+class DEU{
+
+    bool Validaciones ()
+    void notificarAlProponente()
+    void EmitirCartaDeCompromiso()
+
+
+}
+
+class Propuesta{
+    String +fechaDeEmision
+    String +motivo 
+    String +digiridoA
+}
+
+class CartaDeCompromiso {
+    string +fechaDeEmision
+    string +AcuerdoFinanciero
+    String +Compromisos
+}
+
+class SistemaVerificacion{
+    string DatosPropuesta
+    string DatosPorponente
+
+
+    bool ValidarProponente()
+    bool ValidarPropuesta()
+    void NotificarDEU()
+
+}
+
+class CoordinacionExtencion{
+    String ListaAvalesTecnicosEmitidos
+    void EmitirAval()
+    bool VerificarCredenciales()
+    bool VerfificarFormulacionDePropuesta()
+}
+
+class CartaIntension{
+    string +fechaDeEmision
+    string +FinesLucrativos
+}
+Propuesta --> CoordinacionExtencion :eniviar()
+CoordinacionExtencion --> Aval :emite()
+CartaIntension --* CartaDeCompromiso 
+CartaIntension --* Aval
+CartaIntension o-- Proponente : obtiene()
+@endluml
