@@ -119,11 +119,11 @@ return true;
         Usuario usuario = new Usuario(username, lastname, email, password,cedula,tipoced);
             // Crear el archivo .txt
     try (FileWriter writer = new FileWriter(cedula + ".txt")) {
+        writer.write(tipoced + cedula + "\n");
         writer.write(username + "\n");
         writer.write(lastname + "\n");
         writer.write(email + "\n");
-        writer.write(password + "\n");
-        writer.write(tipoced + cedula);
+        writer.write(password);
     } catch (IOException e) {
         System.err.println("Error al crear el archivo: " + e.getMessage());
     }
