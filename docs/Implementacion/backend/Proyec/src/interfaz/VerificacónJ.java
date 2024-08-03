@@ -194,7 +194,6 @@ public class VerificacónJ extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         seleccionarYCopiarPDF();
         int cedula=28309031;
-
         crearPropuesta(cedula, 'E','E');
     }//GEN-LAST:event_jButton1ActionPerformed
 
