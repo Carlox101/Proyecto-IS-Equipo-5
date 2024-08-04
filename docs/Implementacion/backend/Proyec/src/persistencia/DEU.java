@@ -50,9 +50,5 @@ public class DEU {
             System.err.println("Error al procesar el archivo: " + e.getMessage());
         }
     }
-    public static void main(String[] args) {
-        boolean acept=true;
-        procesarPropuestaDEU("29665267", "29665267_5807",acept);
-    }
 }
 

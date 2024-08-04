@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class Propuesta {
         private char estadoCoord;
-    private char estadoDEU;
+        private char estadoDEU;
 
     // Constructor con valores por defecto 'E'
     public Propuesta() {
