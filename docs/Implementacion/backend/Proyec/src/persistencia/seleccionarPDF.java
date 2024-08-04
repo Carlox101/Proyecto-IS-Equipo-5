@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.nio.file.*;
 
 public class seleccionarPDF {
-    public static void seleccionarYCopiarPDF() {
+    public static void seleccionarYCopiarPDF(String Cedula) {
         // Crear un selector de archivos
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Seleccione el archivo PDF");
@@ -20,7 +20,7 @@ public class seleccionarPDF {
             Path rutaBase = Paths.get(System.getProperty("user.dir"));
 
             // Construir la ruta de destino completa
-            Path destinationPath = rutaBase.resolve("28309031").resolve("propuestas").resolve(sourcePath.getFileName());
+            Path destinationPath = rutaBase.resolve(Cedula).resolve("propuestas").resolve(sourcePath.getFileName());
 
             // Crear los directorios de destino si no existen
             try {
