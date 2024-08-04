@@ -17,9 +17,6 @@ public class Propuesta {
         this.estadoDEU = 'E';
     }
 
-    // Getters y setters (si los necesitas
-    // ... (resto del código sin cambios)
-
     public static void crearPropuesta(int cedulaProponente, char estadoCoord, char estadoDEU) {
         // Obtener la ruta de la carpeta actual
         String rutaActual = System.getProperty("user.dir");
@@ -50,7 +47,7 @@ public class Propuesta {
             System.out.println("Error al crear el archivo: " + e.getMessage());
         }
     }
-    public static boolean validarPropuesta(int cedula, String propuesta) {
+    public static String validarPropuesta(int cedula, String propuesta) {
         try {
             // Construir la ruta al archivo
             String rutaBase = new File("").getAbsolutePath();
@@ -61,7 +58,7 @@ public class Propuesta {
             File archivo = new File(rutaArchivo);
             if (!archivo.exists()) {
                 System.out.println("El archivo de propuesta no existe.");
-                return false;
+                return "Propuesta no Existe";
             }
 
             // Leer el contenido del archivo
@@ -73,16 +70,23 @@ public class Propuesta {
             String[] caracteres = linea.split(" ");
             if (caracteres.length != 2) {
                 System.out.println("Formato de archivo inválido.");
-                return false;
+                return "Error al formato de archivo";
             }
+            char primerCaracter = caracteres[0].charAt(0);
+            char segundoCaracter = caracteres[1].charAt(1);
 
-            // Verificar si ambos caracteres son 'A'
-            return caracteres[0].equals("A") && caracteres[1].equals("A");
-
+            if (primerCaracter == 'A' && segundoCaracter == 'A'){
+                return "La Propuesta fue Aceptada!!!";
+            }else if(primerCaracter == 'E' || segundoCaracter == 'E'){
+                return "La Propuesta sigue en Revision";
+            }else if(primerCaracter == 'R' || segundoCaracter == 'R'){
+            return "La Propuesta fue Rechazada";
+            }
         } catch (IOException e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());
-            return false;
+            return "Error al abrir la propuesta";
         }
+        return "Error al validar";
     }
 }
 

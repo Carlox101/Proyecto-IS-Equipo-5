@@ -27,20 +27,4 @@ public class LeerArchivosTXT {
 
         return nombresArchivos;
     }
-
-    public static void main(String[] args) {
-        // Reemplaza "C:/ruta/a/tu/carpeta" con la ruta real de tu carpeta
-        String rutaCarpeta = "C:\\test";
-
-        List<String> nombresArchivos = obtenerNombresArchivosTXT(rutaCarpeta);
-
-        if (!nombresArchivos.isEmpty()) {
-            System.out.println("Lista de Proponentes: ");
-            for (String nombreArchivo : nombresArchivos) {
-                System.out.println(nombreArchivo);
-            }
-        } else {
-            System.out.println("No se encontraron archivos .txt en la carpeta especificada.");
-        }
-    }
 }

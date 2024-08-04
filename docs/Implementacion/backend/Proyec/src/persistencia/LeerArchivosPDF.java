@@ -25,19 +25,4 @@ public class LeerArchivosPDF {
 
         return nombresArchivos;
     }
-
-    public static void main(String[] args) {
-        String rutaCarpeta = "C:\\repositorio\\"+Proponente.cedula+"\\propuestas"; // Reemplaza con la ruta de tu carpeta
-
-        List<String> nombresArchivos = obtenerNombresArchivosPDF(rutaCarpeta);
-
-        if (!nombresArchivos.isEmpty()) {
-            System.out.println("Lista de Propuestas: ");
-            for (String nombreArchivo : nombresArchivos) {
-                System.out.println(nombreArchivo);
-            }
-        } else {
-            System.out.println("No se encontraron archivos PDF en la carpeta especificada.");
-        }
-    }
-}
+ }

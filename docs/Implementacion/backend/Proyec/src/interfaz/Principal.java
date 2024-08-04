@@ -261,14 +261,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_perfilActionPerformed
 
     private void SubirPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubirPDFActionPerformed
-        seleccionarYCopiarPDF();   
+        seleccionarYCopiarPDF("29665267");   
         crearPropuesta(29665267,'E','E');
     }//GEN-LAST:event_SubirPDFActionPerformed
 
     private void SubirPDF1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubirPDF1ActionPerformed
          // Obtener el archivo PDF seleccionado por el usuario
     mostrarArchivos("29665267");
-
     }//GEN-LAST:event_SubirPDF1ActionPerformed
 
     private void codigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoActionPerformed
@@ -278,13 +277,7 @@ public class Principal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String Codigo = codigo.getText();
         int cedula = 29665267;
-        if(validarPropuesta(cedula, Codigo)){
-            Estado.setText("Aprobado");
-        }else{
-            Estado.setText("Rechazado");
-        }
-        
-        
+        String Val = validarPropuesta(cedula, Codigo);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
