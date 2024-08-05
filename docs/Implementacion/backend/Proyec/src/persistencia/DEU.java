@@ -55,7 +55,7 @@ public class DEU {
             System.err.println("Error al procesar el archivo: " + e.getMessage());
         }
     }
-    public class CartaRechazo {
+    public class CartaRechazoDEU{
 
     public static void crearCartaRechazo(String cedula, String propuesta, String carta) 
             throws IOException {

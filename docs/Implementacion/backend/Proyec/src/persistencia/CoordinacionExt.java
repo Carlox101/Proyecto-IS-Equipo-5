@@ -1,6 +1,14 @@
 
 package persistencia;
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class CoordinacionExt {
         public static void procesarPropuestaDEU(String cedula, String propuesta, boolean acept) {
@@ -41,4 +49,28 @@ public class CoordinacionExt {
             System.err.println("Error al procesar el archivo: " + e.getMessage());
         }
     }
+        public class CartaRechazoCoord{
+
+    public static void crearCartaRechazo(String cedula, String propuesta, String carta) 
+            throws IOException {
+        // Obtener la ruta base
+        Path rutaBase = Paths.get(System.getProperty("user.dir"));
+
+        // Construir la ruta de destino completa
+        Path destinationPath = rutaBase.resolve(cedula).resolve("propuestas").resolve(propuesta + "_CartaRechazo.txt");
+
+        // Crear los directorios si no existen
+        File directorio = destinationPath.toFile().getParentFile();
+        if (!directorio.exists()) {
+            if (!directorio.mkdirs()) {
+                throw new IOException("No se pudo crear el directorio: " + directorio.getAbsolutePath());
+            }
+        }
+
+        // Crear el archivo y escribir la carta
+        try (FileWriter writer = new FileWriter(destinationPath.toFile())) {
+            writer.write(carta);
+        }
+    }
+}
 }
