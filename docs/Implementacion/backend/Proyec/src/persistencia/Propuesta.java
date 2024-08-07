@@ -17,7 +17,7 @@ public class Propuesta {
         this.estadoDEU = 'E';
     }
 
-    public static void crearPropuesta(int cedulaProponente, char estadoCoord, char estadoDEU) {
+    public static void crearPropuesta(String cedulaProponente, char estadoCoord, char estadoDEU) {
         // Obtener la ruta de la carpeta actual
         String rutaActual = System.getProperty("user.dir");
 

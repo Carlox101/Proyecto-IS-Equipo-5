@@ -5,7 +5,7 @@ import static persistencia.Propuesta.validarPropuesta;
 import static persistencia.seleccionarPDF.seleccionarYCopiarPDF;
 import static persistencia.VisualizadorArchivosProponente.mostrarArchivos;
 import static persistencia.Propuesta.crearPropuesta;
-import persistencia.LectorUsuarioActual;
+import static persistencia.LectorUsuarioActual.obtenerCedula;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -244,7 +244,7 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    String cedula=LectorUsuarioActual.obtenerCedula();
+    String cedula=obtenerCedula();
     
     private void perfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perfilActionPerformed
           if (perfil.getItemAt(perfil.getSelectedIndex())=="Perfil"){
@@ -264,7 +264,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void SubirPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubirPDFActionPerformed
         seleccionarYCopiarPDF(cedula);   
-        crearPropuesta(29665267,'E','E');
+        crearPropuesta(cedula,'E','E');
     }//GEN-LAST:event_SubirPDFActionPerformed
 
     private void SubirPDF1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubirPDF1ActionPerformed
