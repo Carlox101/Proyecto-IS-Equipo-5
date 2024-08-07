@@ -1,10 +1,11 @@
 
 package interfaz;
-
+import javax.swing.JOptionPane;
 import static persistencia.Propuesta.validarPropuesta;
 import static persistencia.seleccionarPDF.seleccionarYCopiarPDF;
 import static persistencia.VisualizadorArchivosProponente.mostrarArchivos;
 import static persistencia.Propuesta.crearPropuesta;
+import persistencia.LectorUsuarioActual;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -14,7 +15,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -243,7 +244,8 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    String cedula=LectorUsuarioActual.obtenerCedula();
+    
     private void perfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perfilActionPerformed
           if (perfil.getItemAt(perfil.getSelectedIndex())=="Perfil"){
             Perfil frame4 =new Perfil();
@@ -261,13 +263,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_perfilActionPerformed
 
     private void SubirPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubirPDFActionPerformed
-        seleccionarYCopiarPDF("29665267");   
+        seleccionarYCopiarPDF(cedula);   
         crearPropuesta(29665267,'E','E');
     }//GEN-LAST:event_SubirPDFActionPerformed
 
     private void SubirPDF1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubirPDF1ActionPerformed
          // Obtener el archivo PDF seleccionado por el usuario
-    mostrarArchivos("29665267");
+    mostrarArchivos(cedula);
     }//GEN-LAST:event_SubirPDF1ActionPerformed
 
     private void codigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoActionPerformed
@@ -276,8 +278,8 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String Codigo = codigo.getText();
-        int cedula = 29665267;
         String Val = validarPropuesta(cedula, Codigo);
+        JOptionPane.showMessageDialog(null, Val, "ESTADO DE SU PROPUESTA", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

@@ -1,6 +1,8 @@
 
 package interfaz;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -240,14 +242,24 @@ public class Login extends javax.swing.JFrame {
             frame3.setVisible(true);
             frame3.setLocationRelativeTo(null);
             dispose();
+             // Guardar la cédula en el archivo
+        try {
+            FileWriter writer = new FileWriter("UsuarioActual.txt");
+            writer.write(usuario); // Asumimos que "usuario" contiene la cédula
+            writer.close();
+            System.out.println("Cédula guardada correctamente.");
+        } catch (IOException e) {
+            System.err.println("Error al guardar la cédula: " + e.getMessage());
             
-
-        }if(usuario=="0000" && contra=="0000"){
-            PrincipalDEU frame0 =new PrincipalDEU();
-            frame0.setVisible(true);
-            frame0.setLocationRelativeTo(null);
-            dispose();
         }
+
+        }else if(usuario.equals("0000") && contra.equals("0000")) {
+        PrincipalDEU frame0 = new PrincipalDEU();
+        frame0.setVisible(true);
+        frame0.setLocationRelativeTo(null);
+        dispose();
+        }
+        
         else{
             jLabel5.setText("Usuario o contraseña incorrecta");
         }

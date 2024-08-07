@@ -2,7 +2,9 @@ package interfaz;
 
 import static persistencia.Propuesta.crearPropuesta;
 import static persistencia.SubirDocumentos.seleccionarYCopiarPDF;
-
+import persistencia.seleccionarPDF;
+import persistencia.seleccionarPDF;
+import persistencia.LectorUsuarioActual;
 /**
  *
  * @author ANDRE
@@ -175,7 +177,7 @@ public class VerificacónJ extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    String cedula=LectorUsuarioActual.obtenerCedula();
     private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
         if (Inicio.getItemAt(Inicio.getSelectedIndex())=="Perfil"){
             Perfil frame4 =new Perfil();
@@ -192,9 +194,7 @@ public class VerificacónJ extends javax.swing.JFrame {
     }//GEN-LAST:event_InicioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        seleccionarYCopiarPDF();
-        int cedula=28309031;
-        crearPropuesta(cedula, 'E','E');
+        seleccionarPDF.seleccionarYCopiarPDF(cedula);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
